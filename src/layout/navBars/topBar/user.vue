@@ -28,20 +28,8 @@
 				</el-dropdown-menu>
 			</template>
 		</el-dropdown>
-		<div class="layout-navbars-breadcrumb-user-icon" @click="onSearchClick">
-			<el-icon :title="$t('message.user.title2')">
-				<ele-Search />
-			</el-icon>
-		</div>
 		<div class="layout-navbars-breadcrumb-user-icon" @click="onLayoutSetingClick">
 			<i class="icon-skin iconfont" :title="$t('message.user.title3')"></i>
-		</div>
-		<div class="layout-navbars-breadcrumb-user-icon" ref="userNewsBadgeRef" v-click-outside="onUserNewsClick">
-			<el-badge :is-dot="true">
-				<el-icon :title="$t('message.user.title4')">
-					<ele-Bell />
-				</el-icon>
-			</el-badge>
 		</div>
 		<el-popover
 			ref="userNewsRef"
@@ -100,7 +88,6 @@ import { Session, Local } from '/@/utils/storage';
 
 // 引入组件
 const UserNews = defineAsyncComponent(() => import('/@/layout/navBars/topBar/userNews.vue'));
-const Search = defineAsyncComponent(() => import('/@/layout/navBars/topBar/search.vue'));
 
 // 定义变量内容
 const userNewsRef = ref();
@@ -138,10 +125,6 @@ const onScreenfullClick = () => {
 		if (screenfull.isFullscreen) state.isScreenfull = true;
 		else state.isScreenfull = false;
 	});
-};
-// 消息通知点击时
-const onUserNewsClick = () => {
-	unref(userNewsRef).popperRef?.delayHide?.();
 };
 // 布局配置 icon 点击时
 const onLayoutSetingClick = () => {
