@@ -1,5 +1,5 @@
 {
-	"name": "vue-next-admin",
+	"name": "devui-dragonfly",
 	"version": "2.4.33",
 	"description": "vue3 vite next admin template",
 	"author": "lyt_20201208",
@@ -63,9 +63,6 @@
 		"last 2 versions",
 		"not dead"
 	],
-	"bugs": {
-		"url": "https://gitee.com/lyt-top/vue-next-admin/issues"
-	},
 	"engines": {
 		"node": ">=16.0.0",
 		"npm": ">= 7.0.0"
@@ -76,11 +73,11 @@
 		"vuejs/vue-next",
 		"element-ui",
 		"element-plus",
-		"vue-next-admin",
+		"devui-dragonfly",
 		"next-admin"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://gitee.com/lyt-top/vue-next-admin.git"
+		"url": "https://gitee.com/lyt-top/devui-dragonfly.git"
 	}
 }

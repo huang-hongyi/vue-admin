@@ -7,9 +7,6 @@
 				</keep-alive>
 			</transition>
 		</router-view>
-		<transition :name="setTransitionName" mode="out-in">
-			<Iframes class="w100" v-show="isIframePage" :refreshKey="state.iframeRefreshKey" :name="setTransitionName" :list="state.iframeList" />
-		</transition>
 	</div>
 </template>
 
@@ -21,9 +18,6 @@ import { useKeepALiveNames } from '/@/stores/keepAliveNames';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { Session } from '/@/utils/storage';
 import mittBus from '/@/utils/mitt';
-
-// 引入组件
-const Iframes = defineAsyncComponent(() => import('/@/layout/routerView/iframes.vue'));
 
 // 定义变量内容
 const route = useRoute();
@@ -78,9 +72,9 @@ onBeforeMount(() => {
 // 页面加载时
 onMounted(() => {
 	getIframeListRoutes();
-	// https://gitee.com/lyt-top/vue-next-admin/issues/I58U75
-	// https://gitee.com/lyt-top/vue-next-admin/issues/I59RXK
-	// https://gitee.com/lyt-top/vue-next-admin/pulls/40
+	// https://gitee.com/lyt-top/devui-dragonfly/issues/I58U75
+	// https://gitee.com/lyt-top/devui-dragonfly/issues/I59RXK
+	// https://gitee.com/lyt-top/devui-dragonfly/pulls/40
 	nextTick(() => {
 		setTimeout(() => {
 			if (themeConfig.value.isCacheTagsView) {
@@ -95,7 +89,7 @@ onUnmounted(() => {
 	mittBus.off('onTagsViewRefreshRouterView', () => {});
 });
 // 监听路由变化，防止 tagsView 多标签时，切换动画消失
-// https://toscode.gitee.com/lyt-top/vue-next-admin/pulls/38/files
+// https://toscode.gitee.com/lyt-top/devui-dragonfly/pulls/38/files
 watch(
 	() => route.fullPath,
 	() => {
