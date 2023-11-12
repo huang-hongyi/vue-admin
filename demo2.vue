@@ -234,7 +234,7 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 import { formatDate } from '/@/utils/formatTime';
 import { NextLoading } from '/@/utils/loading';
-import { dropdownList, skyList, dBtnList, earth3DBtnList, chartData4List } from './mock/demo2';
+import { dropdownList, skyList, dBtnList, earth3DBtnList, chartData4List } from './demo2';
 
 // 定义变量内容
 const rightChartData1 = ref();
