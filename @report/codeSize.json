@@ -1,0 +1,22 @@
+{
+  "ts": {
+    "fileNumber": 50,
+    "lineNumber": 3959,
+    "totalSize": 0.1187
+  },
+  "vue": {
+    "fileNumber": 47,
+    "lineNumber": 8533,
+    "totalSize": 0.2557
+  },
+  "scss": {
+    "fileNumber": 27,
+    "lineNumber": 2227,
+    "totalSize": 0.05
+  },
+  "total": {
+    "fileNumber": 124,
+    "lineNumber": 14719,
+    "totalSize": 0.4244
+  }
+}
