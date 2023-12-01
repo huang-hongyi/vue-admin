@@ -30,7 +30,7 @@
 
 <script setup lang="ts" name="navMenuHorizontal">
 import { defineAsyncComponent, reactive, computed, onBeforeMount } from 'vue';
-import { useRoute, onBeforeRouteUpdate, RouteRecordRaw } from 'vue-router';
+import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useRoutesList } from '/@/stores/routesList';
 import { useThemeConfig } from '/@/stores/themeConfig';
@@ -44,7 +44,6 @@ const SubItem = defineAsyncComponent(() => import('/@/layout/navMenu/subItem.vue
 const props = defineProps({
 	// 菜单列表
 	menuList: {
-		type: Array<RouteRecordRaw>,
 		default: () => [],
 	},
 });
@@ -108,7 +107,6 @@ onBeforeMount(() => {
 });
 // 路由更新时
 onBeforeRouteUpdate((to) => {
-	// 修复：https://gitee.com/lyt-top/devui-dragonfly/issues/I3YX6G
 	setCurrentRouterHighlight(to);
 	// 修复经典布局开启切割菜单时，点击tagsView后左侧导航菜单数据不变的问题
 	let { layout, isClassicSplitMenu } = themeConfig.value;

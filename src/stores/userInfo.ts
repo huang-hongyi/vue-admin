@@ -27,7 +27,6 @@ export const useUserInfo = defineStore('userInfo', {
 			}
 		},
 		// 模拟接口数据
-		// https://gitee.com/lyt-top/devui-dragonfly/issues/I5F1HP
 		async getApiUserInfo() {
 			return new Promise((resolve) => {
 				setTimeout(() => {

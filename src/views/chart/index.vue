@@ -9,32 +9,14 @@
 				<div class="big-data-down-left">
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
-							<div class="flex-title">天气预报</div>
+							<div class="flex-title">本月渠道工单数</div>
 							<div class="flex-content">
-								<div class="sky">
-									<SvgIcon name="ele-Sunny" class="sky-left" />
-									<div class="sky-center">
-										<div class="mb2">
-											<span>多云转晴</span>
-											<span>东南风</span>
-											<span class="span ml5">良</span>
-										</div>
-									</div>
-									<div class="sky-right">
-										<span>25</span>
-										<span>°C</span>
-									</div>
-								</div>
 								<div class="sky-dd">
 									<div class="sky-dl" v-for="(v, k) in state.skyList" :key="k" :class="{ 'sky-dl-first': k === 1 }">
 										<div>{{ v.v1 }}</div>
-										<div v-if="v.type === 'title'">{{ v.v2 }}</div>
-										<div v-else>
-											<SvgIcon :name="v.v2" />
-										</div>
+										<div>{{ v.v2 }}</div>
 										<div>{{ v.v3 }}</div>
 										<div class="tip">{{ v.v5 }}</div>
-										<div>{{ v.v7 }}</div>
 									</div>
 								</div>
 							</div>
@@ -42,38 +24,43 @@
 					</div>
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
-							<div class="flex-title">当前设备状态</div>
+							<div class="flex-title">用户交易偏好</div>
 							<div class="flex-content flex-content-overflow">
 								<div class="d-states">
 									<div class="d-states-item">
 										<SvgIcon name="ele-Odometer" class="i-bg1" />
 										<div class="d-states-flex">
-											<div class="d-states-item-label">园区设备数</div>
+											<div class="d-states-item-label">零食</div>
 											<div class="d-states-item-value">99</div>
 										</div>
 									</div>
 									<div class="d-states-item">
 										<SvgIcon name="ele-FirstAidKit" class="i-bg2" />
 										<div class="d-states-flex">
-											<div class="d-states-item-label">预警设备数</div>
+											<div class="d-states-item-label">干货</div>
 											<div class="d-states-item-value">10</div>
 										</div>
 									</div>
 									<div class="d-states-item">
-										<SvgIcon name="ele-VideoPlay" class="i-bg3" />
+										<SvgIcon name="ele-VideoPlay" class="i-bg1" />
 										<div class="d-states-flex">
-											<div class="d-states-item-label">运行设备数</div>
+											<div class="d-states-item-label">酒水</div>
 											<div class="d-states-item-value">20</div>
 										</div>
 									</div>
-								</div>
-								<div class="d-btn">
-									<div class="d-btn-item" v-for="(v, k) in state.dBtnList" :key="k">
-										<i class="d-btn-item-left el-icon-money"></i>
-										<div class="d-btn-item-center">
-											<div>{{ v.v2 }}|{{ v.v3 }}</div>
+									<div class="d-states-item">
+										<SvgIcon name="ele-VideoPlay" class="i-bg2" />
+										<div class="d-states-flex">
+											<div class="d-states-item-label">家居</div>
+											<div class="d-states-item-value">10</div>
 										</div>
-										<div class="d-btn-item-eight">{{ v.v4 }}</div>
+									</div>
+									<div class="d-states-item">
+										<SvgIcon name="ele-FirstAidKit" class="i-bg3" />
+										<div class="d-states-flex">
+											<div class="d-states-item-label">肉类</div>
+											<div class="d-states-item-value">40</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -81,7 +68,7 @@
 					</div>
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
-							<div class="flex-title">近30天预警总数</div>
+							<div class="flex-title">热门店铺</div>
 							<div class="flex-content">
 								<div style="height: 100%" ref="chartsWarningRef"></div>
 							</div>
@@ -99,22 +86,15 @@
 					<div class="big-data-down-center-two">
 						<div class="flex-warp-item-box">
 							<div class="flex-title">
-								<span>当前设备监测</span>
-								<span class="flex-title-small">单位：次</span>
+								<span>活跃用户数</span>
+								<span class="flex-title-small">最近7天</span>
 							</div>
 							<div class="flex-content">
-								<div class="flex-content-left">
-									<div class="monitor-item" v-for="(v, k) in state.chartData4List" :key="k">
-										<div class="monitor-wave">
-											<div class="monitor-z-index">
-												<div class="monitor-item-label">{{ v.label }}</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div></div>
 								<div class="flex-content-right">
 									<div style="height: 100%" ref="chartsMonitorRef"></div>
 								</div>
+								<div></div>
 							</div>
 						</div>
 					</div>
@@ -125,8 +105,7 @@
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
 							<div class="flex-title">
-								<span>近7天产品追溯扫码统计</span>
-								<span class="flex-title-small">单位：次</span>
+								<span>销售额与新增会员趋势</span>
 							</div>
 							<div class="flex-content">
 								<div style="height: 100%" ref="chartsSevenDaysRef"></div>
@@ -135,49 +114,37 @@
 					</div>
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
-							<div class="flex-title">当前任务统计</div>
+							<div class="flex-title">本月目标完成进度</div>
 							<div class="flex-content">
-								<div class="task">
-									<div class="task-item task-first-item">
-										<div class="task-item-value task-first">25</div>
-										<div class="task-item-label">待办任务</div>
-									</div>
-									<div class="task-item">
-										<div class="task-item-box task1">
-											<div class="task-item-value">12</div>
-											<div class="task-item-label">施肥</div>
-										</div>
-									</div>
-									<div class="task-item">
-										<div class="task-item-box task2">
-											<div class="task-item-value">3</div>
-											<div class="task-item-label">施药</div>
-										</div>
-									</div>
-									<div class="task-item">
-										<div class="task-item-box task3">
-											<div class="task-item-value">5</div>
-											<div class="task-item-label">农事</div>
-										</div>
-									</div>
-								</div>
 								<div class="progress">
 									<div class="progress-item">
-										<span>施肥率</span>
+										<span>本月已过时间</span>
 										<div class="progress-box">
-											<el-progress :percentage="70" color="#43bdf0"></el-progress>
+											<el-progress :percentage="61" color="#43bdf0"></el-progress>
 										</div>
 									</div>
 									<div class="progress-item">
-										<span>施药率</span>
+										<span>销售目标进度</span>
 										<div class="progress-box">
-											<el-progress :percentage="36" color="#43bdf0"></el-progress>
+											<el-progress :percentage="78" color="#43bdf0"></el-progress>
 										</div>
 									</div>
 									<div class="progress-item">
-										<span>农事率</span>
+										<span>订单目标进度</span>
 										<div class="progress-box">
-											<el-progress :percentage="91" color="#43bdf0"></el-progress>
+											<el-progress :percentage="100" color="#5CB300"></el-progress>
+										</div>
+									</div>
+									<div class="progress-item">
+										<span>粉丝目标进度</span>
+										<div class="progress-box">
+											<el-progress :percentage="54" color="#F23030"></el-progress>
+										</div>
+									</div>
+									<div class="progress-item">
+										<span>会员目标进度</span>
+										<div class="progress-box">
+											<el-progress :percentage="151" color="#5CB300"></el-progress>
 										</div>
 									</div>
 								</div>
@@ -187,8 +154,7 @@
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
 							<div class="flex-title">
-								<span>近7天投入品记录</span>
-								<span class="flex-title-small">单位：件</span>
+								<span>交易金额分布</span>
 							</div>
 							<div class="flex-content">
 								<div style="height: 100%" ref="chartsInvestmentRef"></div>
@@ -245,7 +211,7 @@ const initChartsCenterOne = () => {
 				rotationRange: [0, 0],
 				rotationStep: 45,
 				gridSize: Math.random() * 20 + 5,
-				shape: 'circle',
+				shape: 'roundRect',
 				width: '100%',
 				height: '100%',
 				textStyle: {
@@ -256,31 +222,31 @@ const initChartsCenterOne = () => {
 					},
 				},
 				data: [
-					{ name: 'devui-dragonfly', value: 520 },
-					{ name: 'lyt', value: 520 },
-					{ name: 'next-admin', value: 500 },
-					{ name: '更名', value: 420 },
-					{ name: '智慧农业', value: 520 },
-					{ name: '男神', value: 2.64 },
-					{ name: '好身材', value: 4.03 },
-					{ name: '校草', value: 24.95 },
-					{ name: '酷', value: 4.04 },
-					{ name: '时尚', value: 5.27 },
-					{ name: '阳光活力', value: 5.8 },
-					{ name: '初恋', value: 3.09 },
-					{ name: '英俊潇洒', value: 24.71 },
-					{ name: '霸气', value: 6.33 },
-					{ name: '腼腆', value: 2.55 },
-					{ name: '蠢萌', value: 3.88 },
-					{ name: '青春', value: 8.04 },
-					{ name: '网红', value: 5.87 },
-					{ name: '萌', value: 6.97 },
-					{ name: '认真', value: 2.53 },
-					{ name: '古典', value: 2.49 },
-					{ name: '温柔', value: 3.91 },
-					{ name: '有个性', value: 3.25 },
-					{ name: '可爱', value: 9.93 },
-					{ name: '幽默诙谐', value: 3.65 },
+					{ name: 'Mate 50 Pro', value: 520 },
+					{ name: 'Mate 50 RS', value: 520 },
+					{ name: 'Mate X3', value: 500 },
+					{ name: 'Mate 60 Pro', value: 420 },
+					{ name: 'Mate 60', value: 520 },
+					{ name: 'HUAWEI P60 Art', value: 2.64 },
+					{ name: '华为P60 Pro', value: 4.03 },
+					{ name: 'P50E', value: 24.95 },
+					{ name: '华为畅享系列', value: 260 },
+					{ name: 'HUAWEI Mate系列', value: 5.27 },
+					{ name: 'HarmonyOS 4', value: 5.8 },
+					{ name: 'HUAWEI Mate X3 典藏版', value: 3.09 },
+					{ name: 'HUAWEI Mate 50E', value: 300 },
+					{ name: 'HUAWEI P50 Pocket', value: 150 },
+					{ name: 'HUAWEI nova 11 Pro', value: 2.55 },
+					{ name: '华为畅享 60 Pro', value: 3.88 },
+					{ name: 'HUAWEI P50 Pocket 艺术定制版', value: 8.04 },
+					{ name: 'HUAWEI WATCH 4', value: 5.87 },
+					{ name: '华为Vision智慧屏 Z65 电竞版', value: 6.97 },
+					{ name: '华为凌霄子母路由 Q6', value: 60 },
+					{ name: '华为路由 AX2 Pro', value: 500 },
+					{ name: 'HUAWEI MatePad 2023', value: 50 },
+					{ name: '华为智能门锁', value: 3.25 },
+					{ name: 'HUAWEI WATCH 4 Pro', value: 9.93 },
+					{ name: 'HUAWEI MatePad 10.8', value: 720 },
 				],
 			},
 		],
@@ -304,29 +270,23 @@ const initChartsSevenDays = () => {
 		xAxis: {
 			type: 'category',
 			boundaryGap: false,
-			data: ['1天', '2天', '3天', '4天', '5天', '6天', '7天'],
+			data: ['11/10', '11/11', '11/12', '11/13', '11/14', '11/15', '11/16'],
 		},
 		yAxis: {
 			type: 'value',
 		},
 		series: [
 			{
-				name: '邮件营销',
+				name: '销售额',
 				type: 'line',
 				stack: '总量',
-				data: [12, 32, 11, 34, 90, 23, 21],
+				data: [12, 32, 33, 34, 90, 99, 120],
 			},
 			{
-				name: '联盟广告',
+				name: '新增会员',
 				type: 'line',
 				stack: '总量',
-				data: [22, 82, 91, 24, 90, 30, 30],
-			},
-			{
-				name: '视频广告',
-				type: 'line',
-				stack: '总量',
-				data: [50, 32, 18, 14, 90, 30, 50],
+				data: [22, 82, 91, 91, 90, 130, 140],
 			},
 		],
 	};
@@ -357,10 +317,11 @@ const initChartsWarning = () => {
 					borderRadius: 8,
 				},
 				data: [
-					{ value: 40, name: '监测设备预警' },
-					{ value: 38, name: '天气预警' },
-					{ value: 32, name: '任务预警' },
-					{ value: 30, name: '病虫害预警' },
+					{ value: 14, name: '一号店铺' },
+					{ value: 27, name: '二号店铺' },
+					{ value: 14, name: '三号店铺' },
+					{ value: 20, name: '四号店铺' },
+					{ value: 32, name: '五号店铺' },
 				],
 			},
 		],
@@ -384,7 +345,7 @@ const initChartsMonitor = () => {
 		xAxis: {
 			type: 'category',
 			boundaryGap: false,
-			data: ['02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00'],
+			data: ['11/10', '11/11', '11/12', '11/13', '11/14', '11/15', '11/16', '11/17'],
 		},
 		yAxis: {
 			type: 'value',
@@ -399,7 +360,7 @@ const initChartsMonitor = () => {
 						opacity: 0.1,
 					},
 				},
-				data: [20, 32, 31, 34, 12, 13, 20],
+				data: [70, 100, 90, 98, 50, 60, 90, 92],
 				type: 'line',
 				areaStyle: {},
 			},
@@ -423,14 +384,14 @@ const initChartsInvestment = () => {
 		},
 		xAxis: {
 			type: 'category',
-			data: ['1天', '2天', '3天', '4天', '5天', '6天', '7天'],
+			data: ['0-20', '20-50', '50-100', '100-300', '300-500', '500以上'],
 		},
 		yAxis: {
 			type: 'value',
 		},
 		series: [
 			{
-				data: [10, 20, 15, 80, 70, 11, 30],
+				data: [80, 60, 55, 50, 45, 65],
 				type: 'bar',
 			},
 		],

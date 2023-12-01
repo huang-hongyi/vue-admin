@@ -38,9 +38,14 @@
 			</el-col>
 		</el-row>
 		<el-row :gutter="15" class="home-card-three">
+			<el-col :xs="24" :sm="14" :md="14" :lg="16" :xl="16" class="home-media">
+				<div class="home-card-item">
+					<div style="height: 100%" ref="homeBarRef"></div>
+				</div>
+			</el-col>
 			<el-col :xs="24" :sm="10" :md="10" :lg="8" :xl="8">
 				<div class="home-card-item">
-					<div class="home-card-item-title">快捷导航工具</div>
+					<div class="home-card-item-title">实时订单信息</div>
 					<div class="home-monitor">
 						<div class="flex-warp">
 							<div class="flex-warp-item" v-for="(v, k) in state.homeThree" :key="k">
@@ -54,11 +59,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</el-col>
-			<el-col :xs="24" :sm="14" :md="14" :lg="16" :xl="16" class="home-media">
-				<div class="home-card-item">
-					<div style="height: 100%" ref="homeBarRef"></div>
 				</div>
 			</el-col>
 		</el-row>
@@ -89,38 +89,38 @@ const state = reactive({
 	} as any,
 	homeOne: [
 		{
-			num1: '125,12',
-			num2: '-12.32',
-			num3: '订单统计信息',
+			num1: '12345',
+			num2: '+12.32',
+			num3: '今日支付金额',
 			num4: 'fa fa-meetup',
-			color1: '#FF6462',
+			color1: '#5CB300',
 			color2: '--next-color-primary-lighter',
 			color3: '--el-color-primary',
 		},
 		{
 			num1: '653,33',
 			num2: '+42.32',
-			num3: '月度计划信息',
-			num4: 'iconfont icon-ditu',
-			color1: '#6690F9',
+			num3: '昨日支付金额',
+			num4: 'fa fa-meetup',
+			color1: '#5CB300',
 			color2: '--next-color-success-lighter',
 			color3: '--el-color-success',
 		},
 		{
 			num1: '125,65',
 			num2: '+17.32',
-			num3: '年度计划信息',
-			num4: 'iconfont icon-zaosheng',
-			color1: '#6690F9',
+			num3: '支付人数',
+			num4: 'fa fa-github-alt',
+			color1: '#5CB300',
 			color2: '--next-color-warning-lighter',
 			color3: '--el-color-warning',
 		},
 		{
-			num1: '520,43',
-			num2: '-10.01',
-			num3: '访问统计信息',
+			num1: '1234567',
+			num2: '+10.01',
+			num3: '累计金额',
 			num4: 'fa fa-github-alt',
-			color1: '#FF6462',
+			color1: '#5CB300',
 			color2: '--next-color-danger-lighter',
 			color3: '--el-color-danger',
 		},
@@ -128,56 +128,74 @@ const state = reactive({
 	homeThree: [
 		{
 			icon: 'iconfont icon-yangan',
-			label: '浅粉红',
+			label: '产品一',
 			value: '2.1%OBS/M',
 			iconColor: '#F72B3F',
 		},
 		{
 			icon: 'iconfont icon-wendu',
-			label: '深红(猩红)',
+			label: '产品二',
 			value: '30℃',
 			iconColor: '#91BFF8',
 		},
 		{
 			icon: 'iconfont icon-shidu',
-			label: '淡紫红',
+			label: '产品三',
 			value: '57%RH',
 			iconColor: '#88D565',
 		},
 		{
 			icon: 'iconfont icon-shidu',
-			label: '弱紫罗兰红',
+			label: '产品四',
 			value: '107w',
 			iconColor: '#88D565',
 		},
 		{
 			icon: 'iconfont icon-zaosheng',
-			label: '中紫罗兰红',
+			label: '产品五',
 			value: '57DB',
 			iconColor: '#FBD4A0',
 		},
 		{
 			icon: 'iconfont icon-zaosheng',
-			label: '紫罗兰',
+			label: '产品六',
 			value: '57PV',
 			iconColor: '#FBD4A0',
 		},
 		{
 			icon: 'iconfont icon-zaosheng',
-			label: '暗紫罗兰',
+			label: '产品七',
 			value: '517Cpd',
 			iconColor: '#FBD4A0',
 		},
 		{
 			icon: 'iconfont icon-zaosheng',
-			label: '幽灵白',
+			label: '产品八',
 			value: '12kg',
 			iconColor: '#FBD4A0',
 		},
 		{
 			icon: 'iconfont icon-zaosheng',
-			label: '海军蓝',
-			value: '64fm',
+			label: '产品九',
+			value: '12kg',
+			iconColor: '#FBD4A0',
+		},
+		{
+			icon: 'iconfont icon-zaosheng',
+			label: '产品十',
+			value: '12kg',
+			iconColor: '#FBD4A0',
+		},
+		{
+			icon: 'iconfont icon-zaosheng',
+			label: '产品十一',
+			value: '12kg',
+			iconColor: '#FBD4A0',
+		},
+		{
+			icon: 'iconfont icon-zaosheng',
+			label: '产品十二',
+			value: '12kg',
 			iconColor: '#FBD4A0',
 		},
 	],
@@ -196,31 +214,31 @@ const initLineChart = () => {
 	const option = {
 		backgroundColor: state.charts.bgColor,
 		title: {
-			text: '政策补贴额度',
+			text: '订单实时走势',
 			x: 'left',
 			textStyle: { fontSize: '15', color: state.charts.color },
 		},
 		grid: { top: 70, right: 20, bottom: 30, left: 30 },
 		tooltip: { trigger: 'axis' },
-		legend: { data: ['预购队列', '最新成交价'], right: 0 },
+		legend: { data: ['成交金额', '退款金额'], right: 0 },
 		xAxis: {
-			data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+			data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00'],
 		},
 		yAxis: [
 			{
 				type: 'value',
-				name: '价格',
+				name: '订单',
 				splitLine: { show: true, lineStyle: { type: 'dashed', color: '#f5f5f5' } },
 			},
 		],
 		series: [
 			{
-				name: '预购队列',
+				name: '成交金额',
 				type: 'line',
 				symbolSize: 6,
 				symbol: 'circle',
 				smooth: true,
-				data: [0, 41.1, 30.4, 65.1, 53.3, 53.3, 53.3, 41.1, 30.4, 65.1, 53.3, 10],
+				data: [5000, 21000, 35000, 18000, 15000, 17000, 20000, 40000, 50000, 70000, 72000],
 				lineStyle: { color: '#fe9a8b' },
 				itemStyle: { color: '#fe9a8b', borderColor: '#fe9a8b' },
 				areaStyle: {
@@ -231,12 +249,12 @@ const initLineChart = () => {
 				},
 			},
 			{
-				name: '最新成交价',
+				name: '退款金额',
 				type: 'line',
 				symbolSize: 6,
 				symbol: 'circle',
 				smooth: true,
-				data: [0, 24.1, 7.2, 15.5, 42.4, 42.4, 42.4, 24.1, 7.2, 15.5, 42.4, 0],
+				data: [2000, 7000, 8400, 2400, 2200, 2600, 4000, 7400, 8400, 11000, 11800],
 				lineStyle: { color: '#9E87FF' },
 				itemStyle: { color: '#9E87FF', borderColor: '#9E87FF' },
 				areaStyle: {
@@ -275,8 +293,8 @@ const initLineChart = () => {
 const initPieChart = () => {
 	if (!state.global.dispose.some((b: any) => b === state.global.homeChartTwo)) state.global.homeChartTwo.dispose();
 	state.global.homeChartTwo = markRaw(echarts.init(homePieRef.value, state.charts.theme));
-	var getname = ['房屋及结构物', '专用设备', '通用设备', '文物和陈列品', '图书、档案'];
-	var getvalue = [34.2, 38.87, 17.88, 9.05, 2.05];
+	var getname = ['WEB-PC', 'WAP-PC', 'IOS', 'Android', '其他'];
+	var getvalue = [32.68, 25.75, 16.87, 12.26, 12.43];
 	var data = [];
 	for (var i = 0; i < getname.length; i++) {
 		data.push({ name: getname[i], value: getvalue[i] });
@@ -285,7 +303,7 @@ const initPieChart = () => {
 	const option = {
 		backgroundColor: state.charts.bgColor,
 		title: {
-			text: '房屋建筑工程',
+			text: '渠道占比',
 			x: 'left',
 			textStyle: { fontSize: '15', color: state.charts.color },
 		},
@@ -363,24 +381,24 @@ const initBarChart = () => {
 	const option = {
 		backgroundColor: state.charts.bgColor,
 		title: {
-			text: '地热开发利用',
+			text: '客户数据',
 			x: 'left',
 			textStyle: { fontSize: '15', color: state.charts.color },
 		},
 		tooltip: { trigger: 'axis' },
-		legend: { data: ['供温', '回温', '压力值(Mpa)'], right: 0 },
+		legend: { data: ['客户访问量', '客户统计'], right: 0 },
 		grid: { top: 70, right: 80, bottom: 30, left: 80 },
 		xAxis: [
 			{
 				type: 'category',
-				data: ['1km', '2km', '3km', '4km', '5km', '6km'],
+				data: ['11/10', '11/11', '11/12', '11/13', '11/14', '11/15', '11/16'],
 				boundaryGap: true,
 				axisTick: { show: false },
 			},
 		],
 		yAxis: [
 			{
-				name: '供回温度(℃）',
+				name: '客户访问量',
 				nameLocation: 'middle',
 				nameTextStyle: { padding: [3, 4, 50, 6] },
 				splitLine: { show: true, lineStyle: { type: 'dashed', color: '#f5f5f5' } },
@@ -389,7 +407,7 @@ const initBarChart = () => {
 				axisLabel: { color: state.charts.color, formatter: '{value} ' },
 			},
 			{
-				name: '压力值(Mpa)',
+				name: '客户统计',
 				nameLocation: 'middle',
 				nameTextStyle: { padding: [50, 4, 5, 6] },
 				splitLine: { show: false },
@@ -400,7 +418,7 @@ const initBarChart = () => {
 		],
 		series: [
 			{
-				name: '供温',
+				name: '客户访问量',
 				type: 'line',
 				smooth: true,
 				showSymbol: true,
@@ -419,16 +437,17 @@ const initBarChart = () => {
 				itemStyle: { color: '#FF8000' },
 				// data中可以使用对象，value代表相应的值，另外可加入自定义的属性
 				data: [
-					{ value: 1, stationName: 's1' },
-					{ value: 3, stationName: 's2' },
-					{ value: 4, stationName: 's3' },
-					{ value: 9, stationName: 's4' },
-					{ value: 3, stationName: 's5' },
-					{ value: 2, stationName: 's6' },
+					{ value: 20, stationName: 's1' },
+					{ value: 76, stationName: 's2' },
+					{ value: 40, stationName: 's3' },
+					{ value: 41, stationName: 's4' },
+					{ value: 18, stationName: 's5' },
+					{ value: 42, stationName: 's6' },
+					{ value: 25, stationName: 's7' },
 				],
 			},
 			{
-				name: '回温',
+				name: '客户统计',
 				type: 'line',
 				smooth: true,
 				showSymbol: true,
@@ -452,34 +471,13 @@ const initBarChart = () => {
 					color: '#3bbc86',
 				},
 				data: [
-					{ value: 31, stationName: 's1' },
-					{ value: 36, stationName: 's2' },
-					{ value: 54, stationName: 's3' },
-					{ value: 24, stationName: 's4' },
-					{ value: 73, stationName: 's5' },
-					{ value: 22, stationName: 's6' },
-				],
-			},
-			{
-				name: '压力值(Mpa)',
-				type: 'bar',
-				barWidth: 30,
-				yAxisIndex: 1,
-				itemStyle: {
-					color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-						{ offset: 0, color: 'rgba(108,80,243,0.3)' },
-						{ offset: 1, color: 'rgba(108,80,243,0)' },
-					]),
-					//柱状图圆角
-					borderRadius: [30, 30, 0, 0],
-				},
-				data: [
-					{ value: 11, stationName: 's1' },
-					{ value: 34, stationName: 's2' },
-					{ value: 54, stationName: 's3' },
-					{ value: 39, stationName: 's4' },
-					{ value: 63, stationName: 's5' },
-					{ value: 24, stationName: 's6' },
+					{ value: 18, stationName: 's1' },
+					{ value: 87, stationName: 's2' },
+					{ value: 42, stationName: 's3' },
+					{ value: 75, stationName: 's4' },
+					{ value: 55, stationName: 's5' },
+					{ value: 17, stationName: 's6' },
+					{ value: 28, stationName: 's7' },
 				],
 			},
 		],

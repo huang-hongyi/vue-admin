@@ -1,4 +1,3 @@
-// https://www.npmjs.com/package/mitt
 import mitt, { Emitter } from 'mitt';
 
 // 类型

@@ -26,14 +26,12 @@
 
 <script setup lang="ts" name="navMenuSubItem">
 import { computed } from 'vue';
-import { RouteRecordRaw } from 'vue-router';
 import other from '/@/utils/other';
 
 // 定义父组件传过来的值
 const props = defineProps({
 	// 菜单列表
 	chil: {
-		type: Array<RouteRecordRaw>,
 		default: () => [],
 	},
 });

@@ -96,8 +96,6 @@ const onColumnsAsideMenuClick = async (v: RouteItem) => {
 		}
 	}
 
-	// 一个路由设置自动收起菜单
-	// https://gitee.com/lyt-top/devui-dragonfly/issues/I6HW7H
 	if (!v.children) themeConfig.value.isCollapse = true;
 	else if (v.children.length > 1) themeConfig.value.isCollapse = false;
 };
@@ -127,11 +125,8 @@ const onColumnsAsideDown = (k: number) => {
 		setColumnsAsideMove(k);
 	});
 };
-// 设置只有一个路由时设置自动收起菜单
-// https://gitee.com/lyt-top/devui-dragonfly/issues/I6UW2I
 const setMenuAutoCollaps = (path: string) => {
 	const resData: MittMenu = setSendChildren(path);
-	// https://gitee.com/lyt-top/devui-dragonfly/issues/I6HW7H
 	resData.children.length <= 1 ? (themeConfig.value.isCollapse = true) : (themeConfig.value.isCollapse = false);
 	return resData;
 };

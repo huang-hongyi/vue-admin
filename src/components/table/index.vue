@@ -209,8 +209,6 @@ const pageReset = () => {
 };
 // 打印
 const onPrintTable = () => {
-	// https://printjs.crabbly.com/#documentation
-	// 自定义打印
 	let tableTh = '';
 	let tableTrTd = '';
 	let tableTd: any = {};

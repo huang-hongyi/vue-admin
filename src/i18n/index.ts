@@ -24,8 +24,6 @@ const element = { en: enLocale, 'zh-cn': zhcnLocale, 'zh-tw': zhtwLocale };
 const itemize = { en: [], 'zh-cn': [], 'zh-tw': [] };
 const modules: Record<string, any> = import.meta.glob('./**/*.ts', { eager: true });
 
-// 对自动引入的 modules 进行分类 en、zh-cn、zh-tw
-// https://vitejs.cn/vite3-cn/guide/features.html#glob-import
 for (const path in modules) {
 	const key = path.match(/(\S+)\/(\S+).ts/);
 	if (itemize[key![2]]) itemize[key![2]].push(modules[path].default);
@@ -54,8 +52,6 @@ for (const key in itemize) {
 const stores = useThemeConfig(pinia);
 const { themeConfig } = storeToRefs(stores);
 
-// 导出语言国际化
-// https://vue-i18n.intlify.dev/guide/essentials/fallback.html#explicit-fallback-with-one-locale
 export const i18n = createI18n({
 	legacy: false,
 	silentTranslationWarn: true,

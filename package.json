@@ -75,9 +75,5 @@
 		"element-plus",
 		"devui-dragonfly",
 		"next-admin"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://gitee.com/lyt-top/devui-dragonfly.git"
-	}
+	]
 }

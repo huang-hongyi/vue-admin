@@ -1,7 +1,7 @@
 // 定义内容
 export default {
 	router: {
-		home: '首页',
+		home: '总览',
 		system: '系统设置',
 		systemMenu: '菜单管理',
 		systemRole: '角色管理',
@@ -65,7 +65,7 @@ export default {
 		paramsDynamic: '动态路由',
 		paramsCommonDetails: '普通路由详情',
 		paramsDynamicDetails: '动态路由详情',
-		chartIndex: '大数据图表',
+		chartIndex: '数据图表',
 		visualizingIndex: '数据可视化',
 		visualizingLinkDemo1: '数据可视化演示1',
 		visualizingLinkDemo2: '数据可视化演示2',
