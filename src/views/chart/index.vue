@@ -50,7 +50,7 @@
 										</div>
 									</div>
 									<div class="d-states-item">
-										<SvgIcon name="ele-VideoPlay" class="i-bg1" />
+										<SvgIcon name="ele-FirstAidKit" class="i-bg1" />
 										<div class="d-states-flex">
 											<div class="d-states-item-label">酒水</div>
 											<div class="d-states-item-value">20</div>
@@ -68,6 +68,14 @@
 										<div class="d-states-flex">
 											<div class="d-states-item-label">肉类</div>
 											<div class="d-states-item-value">40</div>
+										</div>
+									</div>
+								</div>
+								<div class="d-btn">
+									<div class="d-btn-item" v-for="(v, k) in state.dBtnList" :key="k">
+										<i class="d-btn-item-left el-icon-money"></i>
+										<div class="d-btn-item-center">
+											<div>{{ v.v2 }}|{{ v.v3 }}</div>
 										</div>
 									</div>
 								</div>

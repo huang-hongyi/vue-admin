@@ -48,7 +48,7 @@ export const skyList = [
  */
 export const dBtnList = [
 	{
-		v2: '阳光玫瑰种植',
+		v2: '云计算 + 大数据 + AI',
 		v3: '126天',
 		v4: '设备在线',
 	},
