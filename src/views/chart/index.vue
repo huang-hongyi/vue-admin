@@ -24,6 +24,14 @@
 					</div>
 					<div class="flex-warp-item">
 						<div class="flex-warp-item-box">
+							<div class="flex-title">热门店铺</div>
+							<div class="flex-content">
+								<div style="height: 100%" ref="chartsWarningRef"></div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-warp-item">
+						<div class="flex-warp-item-box">
 							<div class="flex-title">用户交易偏好</div>
 							<div class="flex-content flex-content-overflow">
 								<div class="d-states">
@@ -63,14 +71,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="flex-warp-item">
-						<div class="flex-warp-item-box">
-							<div class="flex-title">热门店铺</div>
-							<div class="flex-content">
-								<div style="height: 100%" ref="chartsWarningRef"></div>
 							</div>
 						</div>
 					</div>

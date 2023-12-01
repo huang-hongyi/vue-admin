@@ -2,7 +2,6 @@
 	"name": "devui-dragonfly",
 	"version": "2.4.33",
 	"description": "vue3 vite next admin template",
-	"author": "lyt_20201208",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",

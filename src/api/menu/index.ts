@@ -13,14 +13,14 @@ export function useMenuApi() {
 	return {
 		getAdminMenu: (params?: object) => {
 			return request({
-				url: '/gitee/lyt-top/vue-next-admin-images/raw/master/menu/adminMenu.json',
+				url: '',
 				method: 'get',
 				params,
 			});
 		},
 		getTestMenu: (params?: object) => {
 			return request({
-				url: '/gitee/lyt-top/vue-next-admin-images/raw/master/menu/testMenu.json',
+				url: '',
 				method: 'get',
 				params,
 			});
