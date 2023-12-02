@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import { defineConfig, loadEnv, ConfigEnv } from 'vite';
@@ -119,6 +120,13 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			__NEXT_VERSION__: JSON.stringify(process.env.npm_package_version),
 			__NEXT_NAME__: JSON.stringify(process.env.npm_package_name),
 		},
+		test: {
+			environment: 'happy-dom',
+			reporters: ['html'],
+			outputFile: './@report/vitest/index.html',
+			include: ['./src/components/**/*.{test,spec}.js'],
+			open: false,
+		}
 	};
 });
 
