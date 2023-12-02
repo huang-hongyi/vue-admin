@@ -872,7 +872,7 @@ onUnmounted(() => {
 				.flex-warp-item-box {
 					width: 100%;
 					height: 100%;
-					background: rgba(22, 34, 58, 0.4);
+					background: #344899;
 					display: flex;
 					flex-direction: column;
 					padding: 15px;
@@ -1141,7 +1141,7 @@ onUnmounted(() => {
 				.flex-warp-item-box {
 					width: 100%;
 					height: 100%;
-					background: rgba(22, 34, 58, 0.4);
+					background: #344899;
 					display: flex;
 					flex-direction: column;
 					padding: 15px;
