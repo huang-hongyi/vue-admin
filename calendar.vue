@@ -1,5 +1,5 @@
 <template>
-  <el-calendar v-model="value" />
+  <el-calendar v-model="date" />
   <el-button type="primary" @click="changeDate">改变日期</el-button>
 </template>
 
