@@ -1,12 +1,16 @@
 <template>
-  <el-calendar v-model="value" />
-  <el-button type="primary" @click="changeDate">改变日期</el-button>
+  <el-calendar v-model="value" >
+    <template #date-cell="{ data }">
+      <p :class="data.isSelected ? 'is-selected' : ''">
+        {{ data.day.split('-').slice(1).join('-') }}
+        {{ data.isSelected ? '√ ' : '' }}
+      </p>
+    </template>
+  </el-calendar>
 </template>
 
-<script lang="ts" setup>
-  import { ref } from 'vue';
-  let date = ref(new Date());
-  const changeDate = () => {
-    date.value = new Date(new Date().getTime() - (1 * 3600 * 24 * 1000));
+<style>
+  .is-selected {
+    color: #1989fa
   }
-</script>
+</style>
