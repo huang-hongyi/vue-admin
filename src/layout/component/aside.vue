@@ -16,10 +16,9 @@ import { useRoutesList } from '/@/stores/routesList';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
 import mittBus from '/@/utils/mitt';
-
 // 引入组件
-const Logo = defineAsyncComponent(() => import('/@/layout/logo/index.vue'));
-const Vertical = defineAsyncComponent(() => import('/@/layout/navMenu/vertical.vue'));
+import Logo from '../logo/index.vue';
+import Vertical from '../navMenu/vertical.vue';
 
 // 定义变量内容
 const layoutAsideScrollbarRef = ref();

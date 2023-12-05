@@ -3,18 +3,22 @@
 </template>
 
 <script setup lang="ts" name="layout">
-import { onBeforeMount, onUnmounted, defineAsyncComponent } from 'vue';
+import { onBeforeMount, onUnmounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import { Local } from '/@/utils/storage';
-import mittBus from '/@/utils/mitt';
-
+import { useThemeConfig } from '../stores/themeConfig';
+import { Local } from '../utils/storage';
+import mittBus from '../utils/mitt';
 // 引入组件
+import defaults from './main/defaults.vue';
+import classic from './main/classic.vue';
+import transverse from './main/transverse.vue';
+import columns from './main/columns.vue';
+
 const layouts: any = {
-	defaults: defineAsyncComponent(() => import('/@/layout/main/defaults.vue')),
-	classic: defineAsyncComponent(() => import('/@/layout/main/classic.vue')),
-	transverse: defineAsyncComponent(() => import('/@/layout/main/transverse.vue')),
-	columns: defineAsyncComponent(() => import('/@/layout/main/columns.vue')),
+	defaults,
+	classic,
+	transverse,
+	columns,
 };
 
 // 定义变量内容
