@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts" name="wngEditor">
-// https://www.wangeditor.com/v5/for-frame.html#vue3
 import '@wangeditor/editor/dist/css/style.css';
 import { reactive, shallowRef, watch, onBeforeUnmount } from 'vue';
 import { IDomEditor } from '@wangeditor/editor';
@@ -31,8 +30,6 @@ const props = defineProps({
 		type: String,
 		default: () => '请输入内容...',
 	},
-	// https://www.wangeditor.com/v5/getting-started.html#mode-%E6%A8%A1%E5%BC%8F
-	// 模式，可选 <default|simple>，默认 default
 	mode: {
 		type: String,
 		default: () => 'default',
@@ -75,8 +72,6 @@ onBeforeUnmount(() => {
 	if (editor == null) return;
 	editor.destroy();
 });
-// 监听是否禁用改变
-// https://gitee.com/lyt-top/devui-dragonfly/issues/I4LM7I
 watch(
 	() => props.disable,
 	(bool) => {

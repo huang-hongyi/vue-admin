@@ -22,9 +22,6 @@ module.exports = {
 		},
 	],
 	rules: {
-		// http://eslint.cn/docs/rules/
-		// https://eslint.vuejs.org/rules/
-		// https://typescript-eslint.io/rules/no-unused-vars/
 		'@typescript-eslint/ban-ts-ignore': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',

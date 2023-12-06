@@ -1,7 +1,7 @@
 <template>
 	<div class="layout-footer pb15">
 		<div class="layout-footer-warp">
-			<div>devui-dragonfly，Made by lyt with ❤️</div>
+			<div>devui-dragonfly</div>
 			<div class="mt5">深圳市 xxx 公司版权所有</div>
 		</div>
 	</div>

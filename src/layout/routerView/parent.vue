@@ -11,13 +11,13 @@
 </template>
 
 <script setup lang="ts" name="layoutParentView">
-import { defineAsyncComponent, computed, reactive, onBeforeMount, onUnmounted, nextTick, watch, onMounted } from 'vue';
+import { computed, reactive, onBeforeMount, onUnmounted, nextTick, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useKeepALiveNames } from '/@/stores/keepAliveNames';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import { Session } from '/@/utils/storage';
-import mittBus from '/@/utils/mitt';
+import { useKeepALiveNames } from '../../stores/keepAliveNames';
+import { useThemeConfig } from '../../stores/themeConfig';
+import { Session } from '../../utils/storage';
+import mittBus from '../../utils/mitt';
 
 // 定义变量内容
 const route = useRoute();
@@ -72,9 +72,6 @@ onBeforeMount(() => {
 // 页面加载时
 onMounted(() => {
 	getIframeListRoutes();
-	// https://gitee.com/lyt-top/devui-dragonfly/issues/I58U75
-	// https://gitee.com/lyt-top/devui-dragonfly/issues/I59RXK
-	// https://gitee.com/lyt-top/devui-dragonfly/pulls/40
 	nextTick(() => {
 		setTimeout(() => {
 			if (themeConfig.value.isCacheTagsView) {
@@ -89,7 +86,6 @@ onUnmounted(() => {
 	mittBus.off('onTagsViewRefreshRouterView', () => {});
 });
 // 监听路由变化，防止 tagsView 多标签时，切换动画消失
-// https://toscode.gitee.com/lyt-top/devui-dragonfly/pulls/38/files
 watch(
 	() => route.fullPath,
 	() => {

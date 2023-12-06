@@ -34,17 +34,16 @@
 import { defineAsyncComponent, reactive, computed, onMounted, watch } from 'vue';
 import { useRoute, onBeforeRouteUpdate, RouteRecordRaw } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import other from '/@/utils/other';
+import { useThemeConfig } from '../../stores/themeConfig';
+import other from '../../utils/other';
 
 // 引入组件
-const SubItem = defineAsyncComponent(() => import('/@/layout/navMenu/subItem.vue'));
+import SubItem from '../navMenu/subItem.vue';
 
 // 定义父组件传过来的值
 const props = defineProps({
 	// 菜单列表
 	menuList: {
-		type: Array<RouteRecordRaw>,
 		default: () => [],
 	},
 });
@@ -54,7 +53,6 @@ const storesThemeConfig = useThemeConfig();
 const { themeConfig } = storeToRefs(storesThemeConfig);
 const route = useRoute();
 const state = reactive({
-	// 修复：https://gitee.com/lyt-top/devui-dragonfly/issues/I3YX6G
 	defaultActive: route.meta.isDynamic ? route.meta.isDynamicPath : route.path,
 	isCollapse: false,
 });
@@ -84,7 +82,6 @@ onMounted(() => {
 });
 // 路由更新时
 onBeforeRouteUpdate((to) => {
-	// 修复：https://gitee.com/lyt-top/devui-dragonfly/issues/I3YX6G
 	state.defaultActive = setParentHighlight(to);
 	const clientWidth = document.body.clientWidth;
 	if (clientWidth < 1000) themeConfig.value.isCollapse = false;

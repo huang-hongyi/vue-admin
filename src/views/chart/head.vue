@@ -5,7 +5,7 @@
 			<span>{{ state.time.txt }}</span>
 		</div>
 		<div class="up-center">
-			<span>智慧农业系统平台</span>
+			<span>产品销售平台</span>
 		</div>
 	</div>
 </template>

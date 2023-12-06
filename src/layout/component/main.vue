@@ -17,9 +17,9 @@
 import { defineAsyncComponent, onMounted, computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import { NextLoading } from '/@/utils/loading';
+import { useTagsViewRoutes } from '../../stores/tagsViewRoutes';
+import { useThemeConfig } from '../../stores/themeConfig';
+import { NextLoading } from '../../utils/loading';
 
 // 引入组件
 const LayoutParentView = defineAsyncComponent(() => import('/@/layout/routerView/parent.vue'));

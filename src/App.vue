@@ -8,21 +8,20 @@
 </template>
 
 <script setup lang="ts" name="app">
-import { defineAsyncComponent, computed, ref, onBeforeMount, onMounted, onUnmounted, nextTick, watch } from 'vue';
+import { computed, ref, onBeforeMount, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { storeToRefs } from 'pinia';
-import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import other from '/@/utils/other';
-import { Local, Session } from '/@/utils/storage';
-import mittBus from '/@/utils/mitt';
-import setIntroduction from '/@/utils/setIconfont';
-
+import { useTagsViewRoutes } from './stores/tagsViewRoutes';
+import { useThemeConfig } from './stores/themeConfig';
+import other from './utils/other';
+import { Local, Session } from './utils/storage';
+import mittBus from './utils/mitt';
+import setIntroduction from './utils/setIconfont';
 // 引入组件
-const LockScreen = defineAsyncComponent(() => import('/@/layout/lockScreen/index.vue'));
-const Setings = defineAsyncComponent(() => import('/@/layout/navBars/topBar/setings.vue'));
-const CloseFull = defineAsyncComponent(() => import('/@/layout/navBars/topBar/closeFull.vue'));
+import LockScreen from './layout/lockScreen/index.vue';
+import Setings from './layout/navBars/topBar/setings.vue';
+import CloseFull from './layout/navBars/topBar/closeFull.vue';
 
 // 定义变量内容
 const { messages, locale } = useI18n();
@@ -35,7 +34,6 @@ const { themeConfig } = storeToRefs(storesThemeConfig);
 // 设置锁屏时组件显示隐藏
 const setLockScreen = computed(() => {
 	// 防止锁屏后，刷新出现不相关界面
-	// https://gitee.com/lyt-top/devui-dragonfly/issues/I6AF8P
 	return themeConfig.value.isLockScreen ? themeConfig.value.lockScreenTime > 1 : themeConfig.value.lockScreenTime >= 0;
 });
 // 获取全局组件大小

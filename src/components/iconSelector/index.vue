@@ -52,8 +52,8 @@
 <script setup lang="ts" name="iconSelector">
 import { defineAsyncComponent, ref, reactive, onMounted, nextTick, computed, watch } from 'vue';
 import type { TabsPaneContext } from 'element-plus';
-import initIconfont from '/@/utils/getStyleSheets';
-import '/@/theme/iconSelector.scss';
+import initIconfont from '../../utils/getStyleSheets';
+import '../../theme/iconSelector.scss';
 
 // 定义父组件传过来的值
 const props = defineProps({
@@ -92,9 +92,6 @@ const props = defineProps({
 		type: String,
 		default: () => '无相关图标',
 	},
-	// 双向绑定值，默认为 modelValue，
-	// 参考：https://v3.cn.vuejs.org/guide/migration/v-model.html#%E8%BF%81%E7%A7%BB%E7%AD%96%E7%95%A5
-	// 参考：https://v3.cn.vuejs.org/guide/component-custom-events.html#%E5%A4%9A%E4%B8%AA-v-model-%E7%BB%91%E5%AE%9A
 	modelValue: String,
 });
 
@@ -187,8 +184,6 @@ const initFontIconData = async (name: string) => {
 			state.fontIconList.awe = res.map((i: string) => `fa ${i}`);
 		});
 	}
-	// 初始化 input 的 placeholder
-	// 参考（单项数据流）：https://cn.vuejs.org/v2/guide/components-props.html?#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81
 	state.fontIconPlaceholder = props.placeholder;
 	// 初始化双向绑定回显
 	initModeValueEcho();

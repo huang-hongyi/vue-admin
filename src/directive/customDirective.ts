@@ -57,8 +57,6 @@ export function wavesDirective(app: App) {
  * 自定义拖动指令
  * @description  使用方式：v-drag="[dragDom,dragHeader]"，如 `<div v-drag="['.drag-container .el-dialog', '.drag-container .el-dialog__header']"></div>`
  * @description dragDom 要拖动的元素，dragHeader 要拖动的 Header 位置
- * @link 注意：https://github.com/element-plus/element-plus/issues/522
- * @lick 参考：https://blog.csdn.net/weixin_46391323/article/details/105228020?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-10&spm=1001.2101.3001.4242
  */
 export function dragDirective(app: App) {
 	app.directive('drag', {

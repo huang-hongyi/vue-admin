@@ -165,7 +165,7 @@ const onHandleCommandClick = (path: string) => {
 			})
 			.catch(() => {});
 	} else if (path === 'wareHouse') {
-		window.open('https://gitee.com/lyt-top/devui-dragonfly');
+		window.open('https://github.com');
 	} else {
 		router.push(path);
 	}
