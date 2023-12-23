@@ -16,8 +16,11 @@ const dragonflyUtil = () => {
   const packageTime = { begin: 0, end: 0 };
   const writeFile = (analyseResult) => {
     const folderPath = path.join(__dirname, '@webpack')
-    const filePath = path.join(folderPath, 'webpack.json')
-    fs.writeFile(filePath, JSON.stringify(analyseResult), () => { })
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath)
+    }
+    const filePath = path.join(folderPath, 'stats.json')
+    fs.writeFileSync(filePath, JSON.stringify(analyseResult));
   }
   return {
     name: 'dragonfly-util',
@@ -68,7 +71,7 @@ const viteConfig = defineConfig((mode) => {
   return {
     plugins: [vue(), dragonflyUtil(), visualizer({
       emitFile: false,
-      filename: '@webpack/static.html',
+      filename: '@webpack/index.html',
       open: false,
     })],
     root: process.cwd(),
