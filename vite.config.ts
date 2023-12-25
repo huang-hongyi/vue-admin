@@ -5,7 +5,7 @@ import { defineConfig, loadEnv, ConfigEnv } from 'vite';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend-plus';
 import viteCompression from 'vite-plugin-compression';
 import { buildConfig } from './src/utils/build';
-import { visualizer } from 'rollup-plugin-visualizer'
+import { ideConfigs } from './vite.config.ide'
 const pathResolve = (dir: string) => {
 	return resolve(__dirname, '.', dir);
 };
@@ -15,71 +15,11 @@ const alias: Record<string, string> = {
 	'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
 };
 
-const dragonflyUtil = () => {
-	const fs = require('fs');
-	const path = require('path');
-	const packageTime = { begin: 0, end: 0 };
-	const writeFile = (analyseResult) => {
-		const folderPath = path.join(__dirname, '@webpack')
-		if (!fs.existsSync(folderPath)) {
-			fs.mkdirSync(folderPath);
-		}
-		const filePath = path.join(folderPath, 'stats.json')
-		fs.writeFileSync(filePath, JSON.stringify(analyseResult));
-	}
-	return {
-		name: 'dragonfly-util',
-		enforce: 'pre||post',
-		apply: 'build',
-		buildStart() {
-			packageTime.begin = Math.floor(Date.now() / 1000)
-		},
-		buildEnd() {
-			packageTime.end = Math.floor(Date.now() / 1000);
-
-		},
-		writeBundle(_, bundle) {
-			const analyseResult = { packageTime: packageTime } as any;
-			const filesType = ['js', 'css', 'html', 'img']
-			filesType.forEach(item => {
-				analyseResult[item] = {
-					fileNumber: 0,
-					totalSize: 0
-				}
-			});
-			Object.keys(bundle).forEach(item => {
-				if (item.endsWith('.js')) {
-					analyseResult.js.fileNumber++;
-					analyseResult.js.totalSize += (bundle[item]?.code?.length || bundle[item]?.source?.length)
-				}
-				if (item.endsWith('.css')) {
-					analyseResult.css.fileNumber++;
-					analyseResult.css.totalSize += (bundle[item]?.code?.length || bundle[item]?.source?.length)
-				}
-				if (item.endsWith('.html')) {
-					analyseResult.html.fileNumber++;
-					analyseResult.html.totalSize += Buffer.byteLength(bundle[item]?.source, 'utf-8');
-				}
-
-				if (item.endsWith('.png') || item.endsWith('svg')) {
-					analyseResult.img.fileNumber++;
-					analyseResult.img.totalSize += (bundle[item]?.code?.length || bundle[item]?.source?.length)
-
-				}
-				writeFile(analyseResult)
-			})
-		}
-	}
-}
 
 const viteConfig = defineConfig((mode: ConfigEnv) => {
 	const env = loadEnv(mode.mode, process.cwd());
 	return {
-		plugins: [vue(), vueSetupExtend(), viteCompression(), JSON.parse(env.VITE_OPEN_CDN) ? buildConfig.cdn() : null,dragonflyUtil(), visualizer({
-			emitFile: false,
-			filename: '@webpack/index.html',
-			open: false,
-		})],
+		plugins: [vue(), vueSetupExtend(), viteCompression(), JSON.parse(env.VITE_OPEN_CDN) ? buildConfig.cdn() : null, ...ideConfigs],
 		root: process.cwd(),
 		resolve: { alias },
 		base: mode.command === 'serve' ? './' : env.VITE_PUBLIC_PATH,
